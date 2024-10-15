@@ -45,3 +45,10 @@ button:disabled {
   cursor: not-allowed;
   pointer-events: none;
 }
+
+input {
+  padding: 14.5px 20px;
+  border: 1px solid var(--grey-200);
+  border-radius: 12px;
+  width: 100%;
+}
