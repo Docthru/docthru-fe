@@ -26,7 +26,9 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
       pages.push(
         <button
           key={i}
-          className={`${styles['page-button']} ${i === currentPage ? styles.active : ''}`}
+          className={`${styles['page-button']} ${
+            i === currentPage ? styles.active : ''
+          }`}
           onClick={() => handlePageClick(i)}
         >
           {i}
@@ -50,9 +52,19 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
           viewBox="0 0 40 40"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className={currentPage === 1 ? styles['disabled-arrow'] : styles['enabled-arrow']}
+          className={
+            currentPage === 1
+              ? styles['disabled-arrow']
+              : styles['enabled-arrow']
+          }
         >
-          <path d="M23 14L17 20L23 26" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+          <path
+            d="M23 14L17 20L23 26"
+            stroke="currentColor"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
         </svg>
       </button>
 
@@ -70,9 +82,19 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
           viewBox="0 0 40 40"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className={currentPage === totalPages ? styles['disabled-arrow'] : styles['enabled-arrow']}
+          className={
+            currentPage === totalPages
+              ? styles['disabled-arrow']
+              : styles['enabled-arrow']
+          }
         >
-          <path d="M17 14L23 20L17 26" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+          <path
+            d="M17 14L23 20L17 26"
+            stroke="currentColor"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
         </svg>
       </button>
     </div>
@@ -80,4 +102,3 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
 };
 
 export default Pagination;
-

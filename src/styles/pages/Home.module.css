@@ -5,6 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
 }
 
 .new-challenge-button {
@@ -15,7 +16,7 @@
   height: 39px;
   border-radius: 19.5px;
   background-color: #262626;
-  color: #FFFFFF;
+  color: #ffffff;
   font-weight: 600;
   font-size: 16px;
   line-height: 19.09px;

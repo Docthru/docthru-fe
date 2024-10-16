@@ -3,7 +3,7 @@ import axios from './axios';
 const PATH = '/users';
 
 export async function getUserMe() {
-  const res = await axios.post(`${PATH}/me`);
+  const res = await axios.get(`${PATH}/me`);
   return res.data;
 }
 

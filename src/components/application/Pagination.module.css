@@ -11,7 +11,7 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 16.71px;
-  color: #A3A3A3;
+  color: #a3a3a3;
   margin: 0 8px;
   border: none;
   background: none;
@@ -23,7 +23,7 @@
   height: 40px;
   border-radius: 8px;
   background-color: #262626 !important;
-  color: #FFC117 !important;
+  color: #ffc117 !important;
 }
 
 .page-button:hover {
@@ -37,7 +37,7 @@
 }
 
 .disabled-arrow {
-  stroke: #A3A3A3 !important;
+  stroke: #a3a3a3 !important;
 }
 
 .enabled-arrow {
@@ -55,4 +55,3 @@
     line-height: 14.71px;
   }
 }
-
