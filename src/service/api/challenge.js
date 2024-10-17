@@ -3,12 +3,21 @@ import axios from './axios';
 const PATH = '/challenges';
 
 /** GET - 챌린지 목록 조회 */
-export async function getChallengeList({ field, docType, status, search }) {
+export async function getChallengeList({
+  field,
+  docType,
+  status,
+  search,
+  page = '1',
+  limit = '10',
+}) {
   const params = {
     ...(field && { field }),
     ...(docType && { docType }),
     ...(status && { status }),
     ...(search && { search }),
+    ...(page && { page }),
+    ...(limit && { limit }),
   };
 
   const res = await axios.get(`${PATH}`, { params });

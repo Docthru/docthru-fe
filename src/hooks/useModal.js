@@ -1,4 +1,4 @@
-'user client';
+'use client';
 
 import AlertModal from '@/components/modals/AlertModal';
 import { useRouter } from 'next/router';

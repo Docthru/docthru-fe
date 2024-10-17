@@ -8,12 +8,14 @@ export const AuthContext = createContext({
   isLoading: false,
   login: () => {},
   signUp: () => {},
+  isModalOpen: false,
 });
 
 export function AuthProvider({ children }) {
   const queryClient = useQueryClient();
   const [accessToken, setAccessToken] = useState(null);
-  const { onModalOpen, Modal: AuthModal } = useModal();
+  const { onModalOpen, Modal: AuthModal, isModalOpen } = useModal();
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -27,7 +29,7 @@ export function AuthProvider({ children }) {
 
   const {
     data,
-    isLoading,
+    isLoading: isUserLoading,
     refetch: getMe,
   } = useQuery({
     queryKey: ['user'],
@@ -39,33 +41,40 @@ export function AuthProvider({ children }) {
     enabled: !!accessToken,
   });
 
+  useEffect(() => {
+    setIsLoading(isUserLoading);
+  }, [isUserLoading]);
+
   const loginMutation = useMutation({
+    onMutate: () => setIsLoading(true),
     mutationFn: (data) => createLogin(data),
     onSuccess: (data) => {
       if (data && data.accessToken) {
         const { accessToken } = data;
         localStorage.setItem('accessToken', accessToken);
         queryClient.invalidateQueries({ queryKey: ['user'] });
-        onModalOpen({ msg: data.message, path: '/', action: getMe });
+        getMe();
         console.log('Access Token:', data.accessToken);
       }
     },
+    onSettled: () => setIsLoading(false),
   });
 
   const signUpMutation = useMutation({
+    onMutate: () => setIsLoading(true),
     mutationFn: (data) => createUser(data),
     onSuccess: (data) => {
       console.log('Success:', data);
-
       if (data && data.accessToken) {
         const { accessToken } = data;
         localStorage.setItem('accessToken', accessToken);
         queryClient.invalidateQueries({ queryKey: ['user'] });
 
-        onModalOpen({ msg: data.message, path: '/', action: getMe });
+        getMe();
         console.log('Access Token:', data.accessToken);
       }
     },
+    onSettled: () => setIsLoading(false),
   });
 
   return (
@@ -75,6 +84,7 @@ export function AuthProvider({ children }) {
         isLoading,
         login: loginMutation,
         signUp: signUpMutation,
+        isModalOpen,
       }}
     >
       {children}

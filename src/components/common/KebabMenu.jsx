@@ -27,9 +27,9 @@ export default function KebabMenu({ onEdit, onDelete }) {
         setIsOpen(false);
       }
     };
-    document.addEventListener('click', handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside, true);
     return () => {
-      document.removeEventListener('click', handleClickOutside);
+      document.removeEventListener('mousedown', handleClickOutside, true);
     };
   }, []);
 

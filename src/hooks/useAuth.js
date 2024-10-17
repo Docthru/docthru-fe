@@ -1,42 +1,32 @@
-import { useContext, useEffect } from 'react';
-import { useRouter } from 'next/router';
+'use client';
+
+import { useContext } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { AuthContext } from '@/context/AuthProvider';
-import { useModal } from './useModal';
 import { createLogout } from '@/service/api/auth';
+import { useRouter } from 'next/router';
 
-export function useAuth(required) {
+export function useAuth() {
   const context = useContext(AuthContext);
-  const router = useRouter();
 
   if (!context) {
     throw new Error('Error: not used within AuthProvider');
   }
-
-  useEffect(() => {
-    if (required && !context.user && !context.isLoading) {
-      context.onModalOpen({
-        msg: '로그인 된 유저만 접근할수 있습니다.',
-        path: '/auth/login',
-      });
-    }
-  }, [context.user, context.isLoading, router, required]);
   return context;
 }
 
 export function useLogout() {
   const queryClient = useQueryClient();
+  const router = useRouter();
 
-  const { onModalOpen } = useModal();
-
-  const { mutate } = useMutation({
+  const { mutateAsync } = useMutation({
     mutationFn: createLogout,
-    onSuccess: (data) => {
+    onSuccess: () => {
       queryClient.setQueriesData(['user'], null);
-      onModalOpen({ msg: data.message, path: '/' });
       localStorage.removeItem('accessToken');
+      router.reload();
     },
   });
 
-  return mutate;
+  return mutateAsync;
 }

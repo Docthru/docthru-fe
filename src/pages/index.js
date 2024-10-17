@@ -11,6 +11,7 @@ import styles from '../styles/pages/Home.module.css';
 import { useGetChallenges } from '@/service/queries/challenge';
 import Loader from '@/components/common/Loader';
 import Pagination from '@/components/application/Pagination';
+import { keepPreviousData } from '@tanstack/react-query';
 
 export default function Home() {
   const router = useRouter();
@@ -20,21 +21,24 @@ export default function Home() {
     docType: '',
     status: '',
   });
+  const { data, isPending } = useGetChallenges(selectedOption, {
+    enabled: true,
+  });
+
   const [searchTerm, setSearchTerm] = useState('');
-  const [currentPage, setCurrentPage] = useState(1);
+
+  const { meta = {}, list = [] } = data || {};
+  const { totalPages = 1, currentPage: page = 1 } = meta;
+  const [currentPage, setCurrentPage] = useState(page);
 
   const handleOptionChange = (option) => {
     setSelectedOption((pev) => ({ ...pev, option }));
-    // setCurrentPage(1);
   };
-
-  const { data, isPending } = useGetChallenges(selectedOption);
 
   if (isPending) {
     return <Loader />;
   }
-  console.log('data', data);
-  console.log('list', data?.list);
+
   return (
     <>
       <Head>
@@ -63,17 +67,15 @@ export default function Home() {
         />
       </div>
       <AllCardSection
-        data={data}
+        list={list}
         searchTerm={searchTerm}
         selectedOption={selectedOption}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
         site={'home'}
       />
 
       <Pagination
         currentPage={currentPage}
-        totalPages={5} // 계산된 totalPages 사용
+        totalPages={totalPages} // 계산된 totalPages 사용
         onPageChange={setCurrentPage}
       />
     </>

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createLogout } from './auth';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
+const API_URL = process.env.NEXT_PUBLIC_DEV_API_URL;
 
 const instance = axios.create({
   baseURL: API_URL,
@@ -37,9 +37,13 @@ instance.interceptors.response.use(
     ) {
       originalRequest._retry = true;
       try {
-        const response = await instance.post('/users/token/refresh', null, {
-          withCredentials: true,
-        });
+        const response = await instance.post(
+          '/users/token/refresh',
+          {},
+          {
+            withCredentials: true,
+          }
+        );
         const { accessToken } = response.data;
 
         localStorage.setItem('accessToken', accessToken);

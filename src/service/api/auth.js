@@ -8,22 +8,24 @@ export async function getUserMe() {
 }
 
 export async function createUser(data) {
-  const res = await axios.post(`${PATH}/register`, data, {
-    withCredentials: false,
-  });
+  const res = await axios.post(`${PATH}/register`, data);
   return res.data;
 }
 
 export async function createLogin(data) {
   const res = await axios.post(`${PATH}/login`, data, {
-    withCredentials: false,
+    withCredentials: true,
   });
   return res.data;
 }
 
 export async function createLogout() {
-  const res = await axios.post(`${PATH}/logout`, null, {
-    withCredentials: true,
-  });
+  const res = await axios.post(
+    `${PATH}/logout`,
+    {},
+    {
+      withCredentials: true,
+    }
+  );
   return res.data;
 }

@@ -5,6 +5,7 @@ import { useCallback, useEffect } from 'react';
 import Loader from '../common/Loader';
 import { useAuth } from '@/hooks/useAuth';
 import { PUBLIC_ROUTES, AUTH_ROUTES } from '@/variables/variables';
+import { useModal } from '@/hooks/useModal';
 
 export default function Layout({ children }) {
   const router = useRouter();
@@ -20,18 +21,19 @@ export default function Layout({ children }) {
     if (!isLoading) {
       if (!user && !isPublicRoute) {
         router.push('/auth/login');
+
         return;
       }
       if (user && isAuthPage) {
         router.push('/');
+
         return;
       }
       if (user && isAdminRoute && user.role !== 'ADMIN') {
         router.push('/');
-        return;
       }
     }
-  });
+  }, [isLoading, user, isPublicRoute, isAuthPage, isAdminRoute, router]);
 
   useEffect(() => {
     handleRedirects();

@@ -46,7 +46,11 @@ export default function ProfileDropDown({ user }) {
               </li>
             )}
             <li>
-              <button className={styles.logout} type="button" onClick={logout}>
+              <button
+                className={styles.logout}
+                type="button"
+                onClick={async () => await logout()}
+              >
                 로그아웃
               </button>
             </li>
