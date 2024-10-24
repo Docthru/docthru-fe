@@ -75,3 +75,9 @@
     height: 54px;
   }
 }
+
+.rightSection {
+  display: flex;
+  align-items: center; /* 알림 아이콘을 원래 위치로 되돌리기 위해 center로 변경 */
+  gap: 16px; /* 알림 아이콘과 프로필/로그인 버튼 사이의 간격 */
+}

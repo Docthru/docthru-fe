@@ -1,8 +1,7 @@
 import axios from 'axios';
 import CAN_USE_DOM from '@/utils/canUseDom';
 
-const API_URL =
-  process.env.NEXT_PUBLIC_DEV_API_URL || process.env.NEXT_PUBLIC_API_URL;
+const API_URL = process.env.NEXT_PUBLIC_DEV_API_URL;
 
 export const TokenService = {
   TOKEN_KEY: 'accessToken',

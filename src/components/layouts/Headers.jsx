@@ -5,6 +5,7 @@ import Link from 'next/link';
 import ProfileDropDown from './ProfileDropDown';
 import { pages } from '@/variables/variables';
 import Nav from './Nav';
+import Notification from './Notification';
 
 const LoginButton = () => {
   return (
@@ -30,7 +31,11 @@ export function MemberHeader({ user }) {
             priority
           />
         </Link>
-        {user ? <ProfileDropDown user={user} /> : <LoginButton />}
+
+        <div className={styles.rightSection}>
+          {user && <Notification />} {/* 로그인한 사용자에게만 알림 표시 */}
+          {user ? <ProfileDropDown user={user} /> : <LoginButton />}
+        </div>
       </div>
     </header>
   );

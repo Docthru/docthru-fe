@@ -1,7 +1,7 @@
 import { useAlertModal } from '@/hooks/useModal';
 import { createLogin, createUser, getUserMe } from '@/service/api/auth';
 import { useMutation, useQueryClient, useQuery } from '@tanstack/react-query';
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useState, useContext } from 'react';
 
 export const AuthContext = createContext({
   user: null,
@@ -110,4 +110,9 @@ export function AuthProvider({ children }) {
       <AuthModal />
     </AuthContext.Provider>
   );
+}
+
+// useAuth 훅 추가
+export function useAuth() {
+  return useContext(AuthContext);
 }
