@@ -17,8 +17,6 @@ export default function WorkDetail({ data }) {
     return <div>데이터 없음</div>;
   }
 
-  console.log(data);
-
   const { isLike: isLiked, workId, challenge, isEditable, ...rest } = data;
 
   const { onModalOpen, Modal } = useDeleteModal();

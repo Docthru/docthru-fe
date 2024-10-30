@@ -14,7 +14,7 @@
   border: none;
 }
 
-.TextEditor :global(.ql-toolbar) {
+.TextEditor :global(.ql-toolbar.ql-snow) {
   gap: 8px;
   border: none;
   padding: 0;

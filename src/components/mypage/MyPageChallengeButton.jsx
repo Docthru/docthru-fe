@@ -19,9 +19,9 @@ const MyPageChallengeButton = ({
     if (size === 'mobile') {
       maxIndex = length - 1;
     } else if (size === 'tablet') {
-      maxIndex = Math.round(length / 2) - 1;
+      maxIndex = Math.ceil(length / 2) - 1;
     } else {
-      maxIndex = Math.round(length / 3) - 1;
+      maxIndex = Math.ceil(length / 3) - 1;
     }
 
     if (currentIndex < maxIndex) {

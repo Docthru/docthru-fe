@@ -23,9 +23,6 @@ export default function SignUpForm() {
       nickname: data.nickname,
       password: String(data.password),
     };
-
-    console.log('just before submit', filterData);
-
     signUp.mutate(filterData);
   };
 

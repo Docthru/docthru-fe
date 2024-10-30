@@ -1,0 +1,128 @@
+.container {
+  min-height: 70vh;
+  background: None;
+  margin: 3rem 1rem;
+}
+
+.wrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.header {
+  text-align: center;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--brand-black);
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: var(--grey-500);
+  margin-bottom: 3rem;
+}
+
+.grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+}
+
+.card {
+  position: relative;
+  background-color: white;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.profileSection {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.profileImage {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profileInfo {
+  flex: 1;
+}
+
+.name {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: var(--brand-black);
+}
+
+.role {
+  font-size: 0.875rem;
+  color: var(--grey-400);
+}
+
+.description {
+  color: var(--grey-800);
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.socialLinks {
+  display: flex;
+  gap: 1rem;
+}
+
+.socialLink {
+  color: var(--grey-400);
+  transition: color 0.2s ease;
+}
+
+.socialLink:hover {
+  color: #111827;
+}
+
+.footer {
+  margin-top: 4rem;
+  text-align: center;
+  color: #4b5563;
+}
+
+.link {
+  display: inline-block;
+  color: var(--brand-yellow);
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+.link:hover {
+  color: var(--brand-yellow);
+  text-decoration: underline;
+}
+
+@media (min-width: 744px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

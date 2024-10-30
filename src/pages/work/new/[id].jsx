@@ -26,8 +26,6 @@ export default function CreateWorkPage() {
     createWork({ id: challengeId, data: { content } });
   };
 
-  console.log(challengeData);
-
   if (isPending) return <Loader />;
   return (
     <>

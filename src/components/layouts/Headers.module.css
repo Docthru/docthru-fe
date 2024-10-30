@@ -54,13 +54,6 @@
   }
 }
 
-@media only screen and (max-width: 529px) {
-  .AdminHeader,
-  .MemberHeader {
-    display: none;
-  }
-}
-
 @media only screen and (max-width: 743px) {
   .MemberHeader,
   .AdminHeader {

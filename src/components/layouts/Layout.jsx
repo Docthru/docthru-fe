@@ -74,9 +74,12 @@ export default function Layout({ children }) {
   }, [handleRedirects, isLoading, isRedirecting, user]);
 
   const renderHeader = () => {
+    const hiddenOnMobile = routes.isTextEditPage ? styles.headerHidden : '';
+
     if (routes.isAuthRoute) return <AuthHeader />;
-    if (user?.role === 'ADMIN') return <AdminHeader user={user} />;
-    return <MemberHeader user={user} />;
+    if (user?.role === 'ADMIN')
+      return <AdminHeader user={user} className={hiddenOnMobile} />;
+    return <MemberHeader user={user} className={hiddenOnMobile} />;
   };
 
   return (

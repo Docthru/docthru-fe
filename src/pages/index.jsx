@@ -18,7 +18,7 @@ import { dehydrate, QueryClient } from '@tanstack/react-query';
 import { getChallengeList } from '@/service/api/challenge';
 import { useMediaQuery } from 'react-responsive';
 
-export default function Home( ) {
+export default function Home() {
   const isMobile = useMediaQuery({ query: '(max-width: 743px)' });
   const router = useRouter();
 
@@ -27,10 +27,8 @@ export default function Home( ) {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedOption, setSelectedOption] = useState({});
 
-  const { data, isPending } = useGetChallenges(selectedOption, {
-    enabled: true,
-  });
-  
+  const { data, isPending } = useGetChallenges(selectedOption);
+
   const { meta = {}, list = [] } = data || {};
   const { totalPages } = meta;
 
@@ -97,14 +95,11 @@ export default function Home( ) {
         />
       </div>
       {isPending ? (
-        <Loader />
+        <Loader msg="챌린지 불러오는 중" />
       ) : (
         <>
           <div className={styles['card-container']}>
-            <AllCardSection
-              list={list}
-              site={'home'}
-            />
+            <AllCardSection list={list} site={'home'} />
           </div>
           {list.length > 0 && (
             <Pagination

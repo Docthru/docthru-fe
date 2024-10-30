@@ -34,6 +34,18 @@ export default function ChallengeDetailPage() {
     enabled: !!validId,
   });
 
+  useEffect(() => {
+    if (!isChallengeLoading && !challengeData) {
+      router.push('/404');
+    }
+  }, [challengeData, isChallengeLoading, router]);
+
+  useEffect(() => {
+    if (!isChallengeLoading && !challengeData) {
+      router.push('/404');
+    }
+  }, [challengeData, isChallengeLoading, router]);
+
   const {
     data: worksData,
     refetch: refetchWork,
@@ -84,4 +96,3 @@ export default function ChallengeDetailPage() {
     </>
   );
 }
-

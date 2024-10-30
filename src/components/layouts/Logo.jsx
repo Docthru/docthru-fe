@@ -3,6 +3,7 @@ import Link from 'next/link';
 import styles from './Logo.module.css';
 import cn from '@/utils/clsx';
 import assets from '@/variables/images';
+
 export default function Logo({ isAuthPage, className }) {
   return (
     <Link href="/" className={className}>

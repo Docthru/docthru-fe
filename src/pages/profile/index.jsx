@@ -4,7 +4,7 @@ import Loader from '@/components/common/Loader';
 import axios from '@/service/api/axios';
 import MyPageNav from '@/components/mypage/MyPageNav';
 import Profile from '../../components/mypage/Profile';
-import styles from '@/styles/pages/profile/Profile.module.css';
+import styles from '../../styles/pages/profile/Profile.module.css';
 
 export default function ProfileIndex() {
   const [profileData, setProfileData] = useState(null);
@@ -86,7 +86,7 @@ export default function ProfileIndex() {
   );
 
   if (isLoading) {
-    return <Loader msg="프로필로 이동중" />;
+    return <Loader msg="로딩 중" />;
   }
 
   if (error) {

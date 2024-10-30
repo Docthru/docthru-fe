@@ -12,7 +12,7 @@ export default function WorkDetailPage() {
   const { data, isPending } = useGetWork(id);
 
   if (isPending) {
-    return <Loader msg="작업물 생성 페이지로 이동중" />;
+    return <Loader msg="작업물 상세 페이지로 이동중" />;
   }
 
   if (!data) {

@@ -1,6 +1,6 @@
 // cNotification.jsx
 import React, { useState, useEffect, useRef } from 'react';
-import { useAuth } from '../../context/AuthProvider';
+import { useAuth } from '@/hooks/useAuth';
 import Image from 'next/image';
 import assets from '../../variables/images';
 import styles from './Notification.module.css';
@@ -66,12 +66,8 @@ const Notification = () => {
 
   const handleMarkAsRead = async (notificationId) => {
     try {
-      console.log(`읽음 처리할 알림 아이디: ${notificationId}`); // 알림 아이디 출력
       const response = await markAsRead(notificationId); // 읽음 처리 API 호출
-      console.log(`읽음 처리 요청이 ${notificationId} 알림으로 전송됨`); // 알림 전송 확인
-      console.log('읽음 처리 응답:', response); // 응답 내용 출력
       await getNotifications(); // 알림 목록 갱신
-      console.log('알림 목록 갱신 완료');
     } catch (error) {
       console.error(`알림 ID ${notificationId} 읽음 처리 중 오류 발생`); // 알림 아이디와 함께 오류 메시지
       console.error('오류 메시지:', error.message); // 에러 메시지 출력

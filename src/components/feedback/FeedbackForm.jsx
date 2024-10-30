@@ -19,7 +19,6 @@ export default function FeedbackForm({ id }) {
 
   const handleFeedbackSubmit = (data) => {
     mutate(data);
-    console.log(data);
     reset();
   };
 

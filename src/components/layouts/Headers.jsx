@@ -5,6 +5,7 @@ import { pages } from '@/variables/variables';
 import Nav from './Nav';
 import Notification from './Notification';
 import Logo from './Logo';
+import cn from '@/utils/clsx';
 
 const LoginButton = () => {
   return (
@@ -16,9 +17,9 @@ const LoginButton = () => {
   );
 };
 
-export function MemberHeader({ user }) {
+export function MemberHeader({ user, className }) {
   return (
-    <header className={styles.MemberHeader}>
+    <header className={cn(styles.MemberHeader, className)}>
       <div className={styles.container}>
         <Logo />
 
@@ -31,9 +32,9 @@ export function MemberHeader({ user }) {
   );
 }
 
-export function AdminHeader({ user }) {
+export function AdminHeader({ user, className }) {
   return (
-    <header className={styles.AdminHeader}>
+    <header className={cn(styles.AdminHeader, className)}>
       <div className={styles.container}>
         <Nav links={pages} />
         <ProfileDropDown user={user} />

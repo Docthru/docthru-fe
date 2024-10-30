@@ -105,8 +105,3 @@ export function AuthProvider({ children }) {
     </AuthContext.Provider>
   );
 }
-
-// useAuth 훅 추가
-export function useAuth() {
-  return useContext(AuthContext);
-}

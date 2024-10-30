@@ -16,7 +16,6 @@ export function useCreateFeedback(id) {
   return useMutation({
     mutationFn: (data) => createWorkFeedback(id, data),
     onSuccess: () => {
-      console.log('successMutation: 피드백 생성 성공');
       queryClient.invalidateQueries({
         queryKey: workKey.feedbacks(id),
       });
@@ -63,7 +62,6 @@ export function useCreateWork() {
   return useMutation({
     mutationFn: ({ id, data }) => createWork(id, data),
     onSuccess: async (data, variables) => {
-      console.log('successMutation: 작업물 생성 성공');
       await queryClient.invalidateQueries({
         queryKey: challengeKey.list(variables.id),
       });
@@ -80,7 +78,6 @@ export function useDeleteWork() {
   return useMutation({
     mutationFn: ({ id }) => deleteWork(id),
     onSuccess: (_, variables) => {
-      console.log('successMutation: 작업물 삭제 성공');
       queryClient.invalidateQueries({
         queryKey: workKey.detail(variables.id),
       });
@@ -96,7 +93,6 @@ export function useUpdateWork() {
   return useMutation({
     mutationFn: ({ id, data }) => updateWork(id, data),
     onSuccess: async (data, variables) => {
-      console.log('successMutation: 작업물 수정 성공');
       await queryClient.invalidateQueries({
         queryKey: challengeKey.list(variables.id),
       });

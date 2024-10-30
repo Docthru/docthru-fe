@@ -77,7 +77,7 @@ export default function UserProfile() {
   );
 
   if (!router.isReady || isLoading) {
-    return <Loader msg='로딩 중' />;
+    return <Loader msg="로딩 중" />;
   }
 
   if (error) {
@@ -95,7 +95,7 @@ export default function UserProfile() {
   }
 
   return (
-    <div className={styles.mainContent}>
+    <div className={styles.MainContent}>
       {profileData && (
         <>
           <MyPageNav

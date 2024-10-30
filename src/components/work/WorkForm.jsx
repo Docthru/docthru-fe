@@ -7,7 +7,7 @@ import styles from './WorkForm.module.css';
 import cn from '@/utils/clsx';
 import assets from '@/variables/images';
 import Loader from '../common/Loader';
-import { useAuth } from '@/context/AuthProvider';
+import { useAuth } from '@/hooks/useAuth';
 import Logo from '../layouts/Logo';
 
 export default function WorkForm({
